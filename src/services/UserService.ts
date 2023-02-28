@@ -1,5 +1,5 @@
 export interface User {
-    name: string
+    name: string,
     email: string
 }
 
@@ -15,7 +15,7 @@ export class UserService {
 
     constructor(
         database = db
-    ){
+    ) {
         this.db = database
     }
 
@@ -31,6 +31,17 @@ export class UserService {
 
     getAllUsers = () => {
         return this.db
+    }
+
+    deleteUser = (name: string, email: string) => {
+        const user = {
+            name,
+            email
+        }
+        console.log('Usuário deletado', this.db)
+        return this.db.filter(function (userName) {
+            return userName != user;
+        });
     }
 }
 

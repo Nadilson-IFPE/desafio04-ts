@@ -9,4 +9,10 @@ describe('UserService', () => {
         userService.createUser('nath', 'nath@test.com');
         expect(mockConsole).toHaveBeenCalledWith('DB atualizado', mockDb)
     })
+
+    it('Deve deletar um usuário do DB', () => {
+        const mockConsole = jest.spyOn(global.console, 'log')
+        userService.deleteUser('nath', 'nath@test.com');
+        expect(mockConsole).toHaveBeenCalledWith('Usuário deletado', mockDb)
+    })
 })
